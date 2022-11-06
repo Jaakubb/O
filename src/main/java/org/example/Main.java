@@ -26,7 +26,7 @@ public class Main {
 
 
         System.out.println(listaWszystkichAut(eM));
-        System.out.println(ocena(0,eM));
+        System.out.println(ocena(3,eM));
         //eM.getTransaction().commit();
 
 
@@ -41,11 +41,15 @@ public class Main {
         }
         return s;
     }
-    public static int ocena(int d,EntityManager eM){
+    public static float ocena(float d,EntityManager eM){
         Waga w = eM.find(Waga.class,1);
+        Auta auto = eM.find(Auta.class,d);
+        float oc= 0;
+        oc=  (((float) (auto.getPredkosc()-100))/200*w.getPredkosc())+((((float) auto.getPrzyspiesznie()-1)/9*w.getPrzyspieszenie()))+((((float) (auto.getRocznik())-2000)/22*w.getRocznikp()));
+        //normalizacja
+        //liczenie sredniej
 
 
-
-        return ocena;
+        return oc;
     }
 }

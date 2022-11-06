@@ -45,6 +45,6 @@ public class Waga {
     }
 
     public void setRocznikp(int rocznikp) {
-        this.rocznik = rocznikp;
+        this.rocznik = rocznik;
     }
 }
