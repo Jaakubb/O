@@ -56,7 +56,7 @@ public class Main {
         List<Auta> autka = eM.createQuery("SELECT e FROM Auta e" ).getResultList();
         String s ="";
         for(int i=0; i<autka.size(); i++){
-        s+=autka.get(i).getKolor()+"    "+autka.get(i).getMarka()+"    "+autka.get(i).getPredkosc()+"    "+autka.get(i).getPrzyspiesznie()+"    "+autka.get(i).getRocznik()+"\n";
+        s+=autka.get(i).getId()+"    "+autka.get(i).getKolor()+"    "+autka.get(i).getMarka()+"    "+autka.get(i).getPredkosc()+"    "+autka.get(i).getPrzyspiesznie()+"    "+autka.get(i).getRocznik()+"\n";
         }
         return s;
     }
