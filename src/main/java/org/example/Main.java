@@ -26,6 +26,7 @@ public class Main {
 
 
         System.out.println(listaWszystkichAut(eM));
+        System.out.println(ocena(0,eM));
         //eM.getTransaction().commit();
 
 
@@ -36,10 +37,15 @@ public class Main {
         List<Auta> autka = eM.createQuery("SELECT e FROM Auta e" ).getResultList();
         String s ="";
         for(int i=0; i<autka.size(); i++){
-        s+=autka.get(i).getKolor()+"   "+autka.get(i).getMarka()+"   "+autka.get(i).getPredkosc()+"   "+autka.get(i).getPrzyspiesznie()+"   "+autka.get(i).getRocznik()+"\n";
+        s+=autka.get(i).getKolor()+"    "+autka.get(i).getMarka()+"    "+autka.get(i).getPredkosc()+"    "+autka.get(i).getPrzyspiesznie()+"    "+autka.get(i).getRocznik()+"\n";
         }
-
         return s;
+    }
+    public static int ocena(int d,EntityManager eM){
+        Waga w = eM.find(Waga.class,1);
 
+
+
+        return ocena;
     }
 }
