@@ -6,9 +6,11 @@ import jakarta.persistence.Persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
 
         EntityManagerFactory eMF = Persistence.createEntityManagerFactory("default");
         Auta auta = new Auta();
@@ -17,6 +19,7 @@ public class Main {
         //auta.setPrzyspiesznie(3);
         //auta.setMarka("audi");
         //auta.setRocznik(2020);
+        String v ="";
 
         EntityManager eM = eMF.createEntityManager();
 
@@ -26,12 +29,28 @@ public class Main {
 
 
         System.out.println(listaWszystkichAut(eM));
-        System.out.println(ocena(3,eM));
+        System.out.println(ocena(2,eM));
         //eM.getTransaction().commit();
 
 
-        eMF.close();
 
+        while(true) {
+            System.out.println("Wyjście(x)  Lista(l)  Ocena(o)");
+            v = scan.next();
+            if (v.equals("x")) {
+                break;
+            }
+            if (v.equals("l")) {
+                System.out.println(listaWszystkichAut(eM));
+            }
+            if (v.equals("o")) {
+                System.out.println("Podaj id auta");
+                int id2 = scan.nextInt();
+                System.out.println(ocena(id2, eM));
+
+            }
+        }
+        eMF.close();
     }
     public static String listaWszystkichAut(EntityManager eM){
         List<Auta> autka = eM.createQuery("SELECT e FROM Auta e" ).getResultList();
@@ -48,7 +67,7 @@ public class Main {
         oc=  (((float) (auto.getPredkosc()-100))/200*w.getPredkosc())+((((float) auto.getPrzyspiesznie()-1)/9*w.getPrzyspieszenie()))+((((float) (auto.getRocznik())-2000)/22*w.getRocznikp()));
         //normalizacja
         //liczenie sredniej
-
+oc= oc/w.suma_wag();
 
         return oc;
     }

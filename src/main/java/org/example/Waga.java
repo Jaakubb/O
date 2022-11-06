@@ -47,4 +47,8 @@ public class Waga {
     public void setRocznikp(int rocznikp) {
         this.rocznik = rocznik;
     }
+    public int suma_wag(){
+        return this.predkosc+this.rocznik+this.przyspieszenie;
+
+    }
 }
